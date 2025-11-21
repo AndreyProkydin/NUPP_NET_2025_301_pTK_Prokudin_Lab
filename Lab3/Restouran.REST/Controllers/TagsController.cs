@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Restouran.Infrastructure;
 using Restouran.Infrastructure.Models;
 using Restouran.REST.Models;
@@ -22,6 +23,7 @@ namespace Restouran.REST.Controllers
             _tagService = tagService;
         }
 
+        [AllowAnonymous]
         [HttpGet]
         public async Task<ActionResult<IEnumerable<TagModel>>> GetTags()
         {
@@ -36,6 +38,7 @@ namespace Restouran.REST.Controllers
             return Ok(tagModels); 
         }
 
+        [AllowAnonymous]
         [HttpGet("{id}")]
         public async Task<ActionResult<TagModel>> GetTag(int id)
         {
@@ -55,6 +58,7 @@ namespace Restouran.REST.Controllers
             return Ok(tagModel);
         }
 
+        [Authorize(Roles = "Administrator, Moderator, CommonUser")]
         [HttpPost]
         public async Task<ActionResult<TagModel>> PostTag(TagRequestModel requestModel)
         {
@@ -73,6 +77,7 @@ namespace Restouran.REST.Controllers
             return CreatedAtAction(nameof(GetTag), new { id = tagModel.Id }, tagModel);
         }
 
+        [Authorize(Roles = "Administrator, Moderator")]
         [HttpPut("{id}")]
         public async Task<IActionResult> PutTag(int id, TagRequestModel requestModel)
         {
@@ -90,6 +95,7 @@ namespace Restouran.REST.Controllers
             return NoContent(); 
         }
 
+        [Authorize(Roles = "Administrator")]
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteTag(int id)
         {

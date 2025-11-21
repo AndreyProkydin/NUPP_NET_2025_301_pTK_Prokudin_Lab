@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
 using Restouran.Infrastructure.Models;
 using System;
 using System.Collections.Generic;
@@ -9,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace Restouran.Infrastructure
 {
-    public class RestouranContext : DbContext
+    public class RestouranContext : IdentityDbContext<UsersModels> 
     {
         public DbSet<Customer> Customers { get; set; }
         public DbSet<Order> Orders { get; set; }
