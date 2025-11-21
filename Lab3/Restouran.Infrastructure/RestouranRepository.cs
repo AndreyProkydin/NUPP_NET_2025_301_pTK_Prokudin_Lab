@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Restouran.Infrastructure
 {
-    internal class RestouranRepository<T> : IRepository<T> where T: class
+    public class RestouranRepository<T> : IRepository<T> where T: class
     {
         private readonly RestouranContext _context;
         private readonly DbSet<T> _dbSet;
@@ -29,6 +29,11 @@ namespace Restouran.Infrastructure
         {
             _dbSet.Remove(entity);
             await Task.CompletedTask;
+        }
+
+        public IQueryable<T> GetAll()
+        {
+            return _dbSet.AsQueryable();
         }
 
         public async Task<IEnumerable<T>> GetAllAsync()

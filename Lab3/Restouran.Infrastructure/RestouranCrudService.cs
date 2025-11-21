@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Restouran.Infrastructure
 {
-    internal class RestouranCrudService<T> : ICrudServiceAsync<T> where T : class
+    public class RestouranCrudService<T> : ICrudServiceAsync<T> where T : class
     {
 
         private readonly IRepository<T> _repository;
@@ -21,7 +21,7 @@ namespace Restouran.Infrastructure
         public async Task<bool> CreateAsync(T element)
         {
             await _repository.AddAsync(element);
-            return true;
+            return await SaveAsync();
         }
 
         public async Task<T> ReadAsync(int id)
@@ -43,13 +43,13 @@ namespace Restouran.Infrastructure
         public async Task<bool> RemoveAsync(T element)
         {
             await _repository.Delete(element);
-            return true;
+            return await SaveAsync();
         }
 
         public async Task<bool> UpdateAsync(T element)
         {
             await _repository.Update(element);
-            return true;
+            return await SaveAsync();
         }
 
         public async Task<bool> SaveAsync()

@@ -40,7 +40,7 @@ namespace Restouran.Infrastructure
                 TypeOfDessert = "Cake"
             };
 
-            newOrder.customer = newCustomer;  
+            newOrder.customer = newCustomer;
             newOrder.MenuItem.Add(steak);     // 1-to-M
             newOrder.MenuItem.Add(cake);      // 1-to-M
 

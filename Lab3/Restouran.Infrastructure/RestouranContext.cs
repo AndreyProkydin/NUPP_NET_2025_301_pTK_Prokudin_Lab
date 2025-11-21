@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace Restouran.Infrastructure
 {
-    internal class RestouranContext : DbContext
+    public class RestouranContext : DbContext
     {
         public DbSet<Customer> Customers { get; set; }
         public DbSet<Order> Orders { get; set; }
@@ -18,6 +18,14 @@ namespace Restouran.Infrastructure
         public DbSet<Dessert> Desserts { get; set; }
         public DbSet<Tag> Tags { get; set; }
         public DbSet<MenuItemTag> MenuItemTags { get; set; }
+
+        public RestouranContext()
+        {
+        }
+
+        public RestouranContext(DbContextOptions<RestouranContext> options) : base(options)
+        {
+        }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -52,12 +60,15 @@ namespace Restouran.Infrastructure
 
 
             modelBuilder.Entity<MenuItem>().ToTable("MenuItems");
-            modelBuilder.Entity<MainDish>().ToTable("MainDishes"); 
+            modelBuilder.Entity<MainDish>().ToTable("MainDishes"); //
             modelBuilder.Entity<Dessert>().ToTable("Desserts");
         }
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlite("Data Source=restouran.db");
+            if (!optionsBuilder.IsConfigured)
+            {
+                optionsBuilder.UseSqlite("Data Source=restouran.db");
+            }
         }
 
     }

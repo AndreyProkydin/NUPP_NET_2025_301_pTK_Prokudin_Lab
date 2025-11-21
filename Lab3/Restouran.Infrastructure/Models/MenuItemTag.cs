@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Restouran.Infrastructure.Models
 {
-    internal class MenuItemTag
+    public class MenuItemTag
     {
         public int MenuItemId { get; set; }
         public MenuItem MenuItem { get; set; }

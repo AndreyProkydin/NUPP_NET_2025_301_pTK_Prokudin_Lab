@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Restouran.Infrastructure.Models
 {
-    internal class MainDish : MenuItem
+    public class MainDish : MenuItem
     {
         public string TypeOfDish { get; set; }
         public string Category { get; set; }
