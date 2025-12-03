@@ -6,8 +6,9 @@ using System.Threading.Tasks;
 
 namespace Restouran.Infrastructure
 {
-    internal interface IRepository<T> where T : class
+    public interface IRepository<T> where T : class
     {
+        IQueryable<T> GetAll();
         Task<T> GetByIdAsync(int id);
         Task<IEnumerable<T>> GetAllAsync();
         Task AddAsync(T entity);

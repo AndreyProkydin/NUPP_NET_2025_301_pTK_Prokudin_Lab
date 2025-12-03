@@ -1,0 +1,6 @@
+@Restouran.REST_HostAddress = http://localhost:5194
+
+GET {{Restouran.REST_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

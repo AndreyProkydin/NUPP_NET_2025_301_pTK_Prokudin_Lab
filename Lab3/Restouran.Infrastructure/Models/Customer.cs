@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Restouran.Infrastructure.Models
 {
-    internal class Customer
+    public class Customer
     {
         public int Id { get; set; }
         public float TotalSpent { get; set; }

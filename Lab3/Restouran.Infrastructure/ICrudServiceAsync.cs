@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Restouran.Infrastructure
 {
-    internal interface ICrudServiceAsync<T> where T : class
+    public interface ICrudServiceAsync<T> where T : class
     {
         public Task<bool> CreateAsync(T element);
         public Task<T> ReadAsync(int id);
