@@ -13,7 +13,6 @@ namespace Restouran.Infrastructure.Models
 
         public Order? order { get; set; }
 
-
         public void CalculateTotalSpent()
         {
             TotalSpent = order?.MenuItem.Sum(m => m.Price) ?? 0;

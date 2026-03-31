@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Restouran.Infrastructure;
 using Restouran.Infrastructure.Models;
 using Restouran.REST.Models;
@@ -22,6 +23,7 @@ namespace Restouran.REST.Controllers
             _customerService = customerService;
         }
 
+        [AllowAnonymous]
         [HttpGet]
         public async Task<ActionResult<IEnumerable<CustomerModel>>> GetCustomers()
         {
@@ -36,6 +38,7 @@ namespace Restouran.REST.Controllers
             return Ok(customerModels); 
         }
 
+        [AllowAnonymous]
         [HttpGet("{id}")]
         public async Task<ActionResult<CustomerModel>> GetCustomer(int id)
         {
@@ -56,6 +59,7 @@ namespace Restouran.REST.Controllers
         }
 
 
+        [Authorize(Roles = "Administrator, Moderator, CommonUser")]
         [HttpPost]
         public async Task<ActionResult<CustomerModel>> PostCustomer(CustomerRequestModel requestModel)
         {
@@ -73,7 +77,7 @@ namespace Restouran.REST.Controllers
             return CreatedAtAction(nameof(GetCustomer), new { id = customerModel.Id }, customerModel);
         }
 
-
+        [Authorize(Roles = "Administrator, Moderator")]
         [HttpPut("{id}")]
         public async Task<IActionResult> PutCustomer(int id, CustomerRequestModel requestModel)
         {
@@ -91,6 +95,7 @@ namespace Restouran.REST.Controllers
             return NoContent(); 
         }
 
+        [Authorize(Roles = "Administrator")]
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteCustomer(int id)
         {

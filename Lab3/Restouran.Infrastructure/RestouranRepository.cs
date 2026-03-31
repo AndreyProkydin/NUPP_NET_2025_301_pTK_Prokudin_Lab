@@ -50,6 +50,8 @@ namespace Restouran.Infrastructure
         {
             _context.Entry(entity).State = EntityState.Modified;
             _dbSet.Update(entity);
+
+            // НЕ викликаємо SaveChangesAsync()
             return Task.CompletedTask;
         }
     }

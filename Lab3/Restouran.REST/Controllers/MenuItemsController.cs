@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Restouran.Infrastructure;
 using Restouran.Infrastructure.Models;
@@ -31,7 +32,7 @@ namespace Restouran.REST.Controllers
             _menuItemService = menuItemservice;
         }
 
-
+        [AllowAnonymous]
         [HttpGet]
         public async Task<ActionResult<IEnumerable<MenuItemModel>>> GetMenuItems()
         {
@@ -56,6 +57,7 @@ namespace Restouran.REST.Controllers
             return Ok(menuItemModels); 
         }
 
+        [AllowAnonymous]
         [HttpGet("{id}")]
         public async Task<ActionResult<MenuItemModel>> GetMenuItem(int id)
         {
@@ -85,6 +87,7 @@ namespace Restouran.REST.Controllers
             return Ok(menuItemModel);
         }
 
+        [Authorize(Roles = "Administrator, Moderator, CommonUser")]
         [HttpPost]
         public async Task<ActionResult<MenuItemModel>> PostMenuItem(MenuItemRequestModel requestModel)
         {
@@ -118,6 +121,7 @@ namespace Restouran.REST.Controllers
             return CreatedAtAction(nameof(GetMenuItem), new { id = createdModel.IdItem }, createdModel); 
         }
 
+        [Authorize(Roles = "Administrator, Moderator")]
         [HttpPut("{id}")]
         public async Task<IActionResult> PutMenuItem(int id, MenuItemRequestModel requestModel)
         {
@@ -150,6 +154,7 @@ namespace Restouran.REST.Controllers
             return NoContent(); 
         }
 
+        [Authorize(Roles = "Administrator")]
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteMenuItem(int id)
         {
