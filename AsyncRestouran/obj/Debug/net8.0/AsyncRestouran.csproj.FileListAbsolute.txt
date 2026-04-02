@@ -1,0 +1,14 @@
+E:\Lab2\AsyncRestouran\bin\Debug\net8.0\AsyncRestouran.exe
+E:\Lab2\AsyncRestouran\bin\Debug\net8.0\AsyncRestouran.deps.json
+E:\Lab2\AsyncRestouran\bin\Debug\net8.0\AsyncRestouran.runtimeconfig.json
+E:\Lab2\AsyncRestouran\bin\Debug\net8.0\AsyncRestouran.dll
+E:\Lab2\AsyncRestouran\bin\Debug\net8.0\AsyncRestouran.pdb
+E:\Lab2\AsyncRestouran\obj\Debug\net8.0\AsyncRestouran.GeneratedMSBuildEditorConfig.editorconfig
+E:\Lab2\AsyncRestouran\obj\Debug\net8.0\AsyncRestouran.AssemblyInfoInputs.cache
+E:\Lab2\AsyncRestouran\obj\Debug\net8.0\AsyncRestouran.AssemblyInfo.cs
+E:\Lab2\AsyncRestouran\obj\Debug\net8.0\AsyncRestouran.csproj.CoreCompileInputs.cache
+E:\Lab2\AsyncRestouran\obj\Debug\net8.0\AsyncRestouran.dll
+E:\Lab2\AsyncRestouran\obj\Debug\net8.0\refint\AsyncRestouran.dll
+E:\Lab2\AsyncRestouran\obj\Debug\net8.0\AsyncRestouran.pdb
+E:\Lab2\AsyncRestouran\obj\Debug\net8.0\AsyncRestouran.genruntimeconfig.cache
+E:\Lab2\AsyncRestouran\obj\Debug\net8.0\ref\AsyncRestouran.dll
